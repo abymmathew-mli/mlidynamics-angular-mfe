@@ -1,0 +1,22 @@
+<ul class="horizontal">
+  <li><a routerLink="/">Dashboard</a></li>
+  <li><a routerLink="/profile">Profile</a></li>
+  <!--<li><a routerLink="/logout" (click)="logout()">Logout</a></li>-->
+  <li>
+    <button
+      *ngIf="(isAuthenticated$ | async) === false; else logout"
+      class="button-pill"
+      (click)="signIn()"
+    >
+      <span>login</span>
+    </button>
+
+    <ng-template #logout>
+      <button class="button-pill" (click)="signOut()">
+        <span>logout</span>
+      </button>
+    </ng-template>
+  </li>
+</ul>
+
+<router-outlet></router-outlet>
